@@ -1,5 +1,4 @@
 ﻿namespace Logic;
-
 public class BSTNode
 {
     public BSTNode? Left { get;  set; }

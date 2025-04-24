@@ -4,10 +4,17 @@ public class Edge
     public MapNode Destination { get; }
     public int? RequiredStrength { get; set; }
     public int? RequiredAgility { get; set; }
-    public int? RequiredIntelligence { get; set; }
-    public string? RequiredItem { get; set; }
+    public int? RequiredWisdom { get; set; }
+    public Items? RequiredItem { get; set; }
 
-    public Edge(MapNode to) {  Destination = to; }
+    public Edge(MapNode toNode, int? requiredStrength = null, int? requiredAgility = null, int? requiredWisdom = null, Items? requiredItem = null )
+    {
+        Destination = toNode;
+        RequiredStrength = requiredStrength;
+        RequiredAgility = requiredAgility;  
+        RequiredWisdom = requiredWisdom;
+        RequiredItem = requiredItem;
+    }
 
     public bool CanTraverse(Hero hero)
     {
@@ -15,9 +22,9 @@ public class Edge
             return false;
         if (RequiredAgility.HasValue && hero.Agility < RequiredAgility)
             return false;
-        if (RequiredIntelligence.HasValue && hero.Wisdom < RequiredIntelligence)
+        if (RequiredWisdom.HasValue && hero.Wisdom < RequiredWisdom)
             return false;
-        if (!string.IsNullOrEmpty(RequiredItem) && !hero.HasItem(RequiredItem))
+        if (RequiredItem != null && !hero.HasItem(RequiredItem))
             return false;
         return true;
     }

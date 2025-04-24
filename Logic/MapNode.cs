@@ -1,5 +1,4 @@
 ﻿namespace Logic;
-
 public class MapNode
 {
     public List<Edge> Edges { get; }

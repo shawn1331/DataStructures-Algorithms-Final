@@ -82,18 +82,18 @@ public class ChallengeBST
         return (1 + Math.Max(leftHeight, rightHeight));
     }
 
-    private BSTNode? RotateLeft(BSTNode? node)
+    private BSTNode RotateLeft(BSTNode? node)
     {
-        BSTNode? temp = node.Right;
-        node.Right = temp.Left;
+        BSTNode temp = node?.Right;
+        node.Right = temp?.Left;
         temp.Left = node;
         return temp;
     }
 
     private BSTNode? RotateRight(BSTNode? node)
     {
-        BSTNode? temp = node.Left;
-        node.Left = temp.Right;
+        BSTNode? temp = node?.Left;
+        node.Left = temp?.Right;
         temp.Right = node;
         return temp;
     }
