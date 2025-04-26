@@ -24,7 +24,7 @@ public class Hero
         Items? saveItem = null;
         if (Inventory.Count == 5)
         {
-            if (Inventory.Peek().GetType() == typeof(Sword)  || Inventory.Peek().GetType() == typeof(Staff) || Inventory.Peek().GetType() == typeof(Bow) )
+            if (Inventory.Peek().GetType() == typeof(Sword)  || Inventory.Peek().GetType() == typeof(Staff) || Inventory.Peek().GetType() == typeof(Bow))
             {
                 saveItem = Inventory.Dequeue(); // cannot discard weapon
             }
@@ -37,8 +37,5 @@ public class Hero
 
     public bool HasItem(Items item) => Inventory.Contains(item);
 
-    public void DisplayInventory()
-    {
-        Console.WriteLine("Inventory: " + string.Join(", ", Inventory));
-    }
+    public void DisplayInventory() => Console.WriteLine("Inventory: " + string.Join(", ", Inventory));
 }

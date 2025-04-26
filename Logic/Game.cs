@@ -38,40 +38,46 @@ public class Game
 
         TreasureBST.AddNode(2,Challenge.Puzzle, Random.Shared.Next(1, 21));
         TreasureBST.AddNode(3, Challenge.Combat, Random.Shared.Next(1, 21));
-        TreasureBST.AddNode(4,Challenge.Combat,);
-        TreasureBST.AddNode(5,Challenge.Trap,);
-        TreasureBST.AddNode(6,Challenge.Combat,);
-        TreasureBST.AddNode(7,Challenge.Trap,);
-        TreasureBST.AddNode(8,Challenge.Puzzle,);
-        TreasureBST.AddNode(9,Challenge.Combat,);
-        TreasureBST.AddNode(10,Challenge.Trap,);
-        TreasureBST.AddNode(11, Challenge.Combat,);
-        TreasureBST.AddNode(12, Challenge.Combat,);
-        TreasureBST.AddNode(13, Challenge.Puzzle,);
-        TreasureBST.AddNode(14, Challenge.Puzzle,);
-        TreasureBST.AddNode(15, Challenge.Trap,);
-        TreasureBST.AddNode(16, Challenge.Puzzle,);
-        TreasureBST.AddNode(17, Challenge.Trap,);
-        TreasureBST.AddNode(18, Challenge.Combat,);
-        TreasureBST.AddNode(19, Challenge.Puzzle,);
-        TreasureBST.AddNode(20, Challenge.Trap,);
-        TreasureBST.AddNode(21, Challenge.Puzzle,);
-        TreasureBST.AddNode(22, Challenge.Combat,);
-        TreasureBST.AddNode(23, Challenge.Trap,);
-        TreasureBST.AddNode(24, Challenge.Trap,);
-        TreasureBST.AddNode(25, Challenge.Puzzle,);
-        TreasureBST.AddNode(26, Challenge.Trap,);
-        TreasureBST.AddNode(27, Challenge.Puzzle.);
-        TreasureBST.AddNode(28, Challenge.Combat,);
-        TreasureBST.AddNode(29, Challenge.Trap,);
-        TreasureBST.AddNode(30, Challenge.Puzzle,);
-        TreasureBST.AddNode(31, Challenge.Trap,);
-
+        TreasureBST.AddNode(4,Challenge.Combat, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(5,Challenge.Trap, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(6,Challenge.Combat, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(7,Challenge.Trap, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(8,Challenge.Puzzle, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(9,Challenge.Combat, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(10,Challenge.Trap, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(11, Challenge.Combat, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(12, Challenge.Combat, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(13, Challenge.Puzzle, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(14, Challenge.Puzzle, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(15, Challenge.Trap, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(16, Challenge.Puzzle, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(17, Challenge.Trap, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(18, Challenge.Combat, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(19, Challenge.Puzzle, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(20, Challenge.Trap, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(21, Challenge.Puzzle, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(22, Challenge.Combat, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(23, Challenge.Trap, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(24, Challenge.Trap, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(25, Challenge.Puzzle, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(26, Challenge.Trap, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(27, Challenge.Puzzle, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(28, Challenge.Combat, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(29, Challenge.Trap, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(30, Challenge.Puzzle, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(31, Challenge.Trap, Random.Shared.Next(1, 21));
     }
 
     public void RunGame()
     {
         MapNode current = Dungeon.Map[1];
+        MapNode exit = Dungeon.Map[32];
+        Dungeon.Visited.Add(current);
 
+        while(current != exit && Hero?.Health > 0)
+        {
+
+        }
+        
     }
 }

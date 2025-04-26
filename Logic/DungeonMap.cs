@@ -3,7 +3,7 @@ public class DungeonMap
 {
     public Dictionary<int, MapNode> Map { get; }
     public Stack<Items> RoomTreasures { get; }
-    public HashSet<BSTNode> Visited { get; }
+    public HashSet<MapNode> Visited { get; }
 
     public DungeonMap()
     {

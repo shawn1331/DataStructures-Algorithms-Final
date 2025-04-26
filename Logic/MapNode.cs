@@ -9,5 +9,4 @@ public class MapNode
         Edges = new();
         ID = id;
     }
-
 }
