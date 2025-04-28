@@ -8,7 +8,8 @@ while (playAgain)
 {
     string heroName = GetHeroName();
     Hero hero = GetHeroChoice(heroName);
-    Game game = new(hero);
+    Game game = new(hero, GetUserPath, GetStatChoice, GetInitialPath);
+
     game.RunGame();
 
 }
@@ -29,6 +30,7 @@ while (playAgain)
 
 static string GetHeroName()
 {
+    Console.Clear();
     Console.WriteLine("Please enter the name of your hero.");
     string? name = Console.ReadLine();
 
@@ -37,19 +39,64 @@ static string GetHeroName()
         Console.WriteLine("That was an invalid entry try again");
         return GetHeroName();
     }
-
-    return name;
+    else
+        return name;
 }
 
-static int GetUserInput()
+static int GetInitialPath()
 {
-    Console.WriteLine("Which direction would you like to go?");
+    Console.WriteLine(@"Which direction would you like to go?
+Press the number associated with the direction you would like to travel:
+1. Left path
+2. Middle path
+3. Right path");
 
+    char choice = Console.ReadKey(true).KeyChar;
 
+    if (char.IsNumber(choice) && (int)choice >= 49 && (int)choice <= 51)
+    {
+        return choice switch
+        {
+            '1' => 1,
+            '2' => 2,
+            '3' => 3,
+            _ => GetUserPath()
+        };
+    }
+    else
+    {
+        return GetUserPath();
+    }
+}
+
+static int GetUserPath()
+{
+    Console.Clear();
+    Console.WriteLine(@"Which direction would you like to go?
+Press the number associated with the direction you would like to travel:
+1. Continue straight down path
+2. Take the branching path");
+
+    char choice = Console.ReadKey(true).KeyChar;
+
+    if (char.IsNumber(choice) && (int)choice >= 49 && (int)choice <= 50)
+    {
+        return choice switch
+        {
+            '1' => 1,
+            '2' => 2,
+            _ => GetUserPath()
+        };
+    }
+    else
+    {
+        return GetUserPath();
+    }
 }
 
 static Hero GetHeroChoice(string name)
 {
+    Console.Clear();
     Console.WriteLine(@"    CHOOSE YOUR HERO'S CLASS!
 
 Press the number corresponding to the class you'd like.
@@ -66,12 +113,35 @@ Press the number corresponding to the class you'd like.
             '1' => new Warrior(name),
             '2' => new Rogue(name),
             '3' => new Wizard(name),
-            _ => null
+            _ => GetHeroChoice(name)
         };
     }
     else
     {
-        Console.Clear();
         return GetHeroChoice(name);
     }
+}
+
+static int GetStatChoice()
+{
+    Console.WriteLine(@"--Choose a stat to boost!--
+Press the number associated with the stat you would like to increase:
+1. Strength
+2. Agility
+3. Wisdom");
+
+    char choice = Console.ReadKey(true).KeyChar;
+
+    if (char.IsNumber(choice) && (int)choice >= 49 && (int)choice <= 51)
+    {
+        return choice switch
+        {
+            '1' => 1,
+            '2' => 2,
+            '3' => 3,
+            _ => GetStatChoice()
+        };
+    }
+    else
+        return GetStatChoice();
 }

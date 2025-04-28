@@ -5,7 +5,7 @@ public abstract class Items
 
     protected Items(string name) { Name = name; }
 
-    public virtual void ApplyTo(Hero hero) { }
+    public abstract int ApplyTo(Hero hero);
 
     public override string ToString() => Name;
 }

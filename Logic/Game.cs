@@ -2,14 +2,21 @@
 public class Game
 {
     public Hero? Hero { get; }
-    public DungeonMap? Dungeon { get; }
-    public ChallengeBST? TreasureBST { get; }
+    public DungeonMap Dungeon { get; }
+    public ChallengeBST TreasureBST { get; }
+    public delegate int GetInputDelegate();
+    public  GetInputDelegate GetDirectionInput;
+    public GetInputDelegate GetStatInput;
+    public GetInputDelegate GetInitialDirectionInput;
 
-    public Game(Hero? hero)
+    public Game(Hero? hero, GetInputDelegate getInputDelegate, GetInputDelegate getStatInput, GetInputDelegate getInitialDirectionInput)
     {
         Hero = hero;
         Dungeon = new();
         TreasureBST = new();
+        GetDirectionInput = getInputDelegate;
+        GetStatInput = getStatInput;
+        GetInitialDirectionInput = getInitialDirectionInput;
 
         for (int i = 1; i < 33; i++)
         {
@@ -36,15 +43,15 @@ public class Game
             Dungeon.AddConnection(i + 22, i + 21);
         }
 
-        TreasureBST.AddNode(2,Challenge.Puzzle, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(2, Challenge.Puzzle, Random.Shared.Next(1, 21));
         TreasureBST.AddNode(3, Challenge.Combat, Random.Shared.Next(1, 21));
-        TreasureBST.AddNode(4,Challenge.Combat, Random.Shared.Next(1, 21));
-        TreasureBST.AddNode(5,Challenge.Trap, Random.Shared.Next(1, 21));
-        TreasureBST.AddNode(6,Challenge.Combat, Random.Shared.Next(1, 21));
-        TreasureBST.AddNode(7,Challenge.Trap, Random.Shared.Next(1, 21));
-        TreasureBST.AddNode(8,Challenge.Puzzle, Random.Shared.Next(1, 21));
-        TreasureBST.AddNode(9,Challenge.Combat, Random.Shared.Next(1, 21));
-        TreasureBST.AddNode(10,Challenge.Trap, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(4, Challenge.Combat, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(5, Challenge.Trap, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(6, Challenge.Combat, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(7, Challenge.Trap, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(8, Challenge.Puzzle, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(9, Challenge.Combat, Random.Shared.Next(1, 21));
+        TreasureBST.AddNode(10, Challenge.Trap, Random.Shared.Next(1, 21));
         TreasureBST.AddNode(11, Challenge.Combat, Random.Shared.Next(1, 21));
         TreasureBST.AddNode(12, Challenge.Combat, Random.Shared.Next(1, 21));
         TreasureBST.AddNode(13, Challenge.Puzzle, Random.Shared.Next(1, 21));
@@ -73,11 +80,35 @@ public class Game
         MapNode current = Dungeon.Map[1];
         MapNode exit = Dungeon.Map[32];
         Dungeon.Visited.Add(current);
+        Queue<MapNode> queue = new(15);
+        List<MapNode> directionsToTravel = new();
 
+        Console.WriteLine(@"You have entered the first room of the dungeon. You see before you 3 branching paths,
+each room is filled with deadly monsters, traps, and puzzels that you must brave to reach the exit.
+These encounters have a difficulty, if the required stat is below the difficulty you will lose that much health.
+You have been warned!");
+
+        int choice = GetInitialDirection();
+        current = choice switch
+        {
+            1 => Dungeon.Map[2],
+            2 => Dungeon.Map[12],
+            3 => Dungeon.Map[22],
+            _ => Dungeon.Map[2]
+        };
+
+        queue.Enqueue(current);
+        Dungeon.Visited.Add(current);
         while(current != exit && Hero?.Health > 0)
         {
 
         }
         
     }
+
+    public int GetDirection() => GetDirectionInput();
+
+    public int GetStatChoice() => GetStatInput();
+
+    public int GetInitialDirection() => GetInitialDirectionInput();
 }
