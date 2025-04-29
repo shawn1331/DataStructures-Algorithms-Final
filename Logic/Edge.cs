@@ -26,6 +26,7 @@ public class Edge
             return false;
         if (RequiredItem != null && !hero.HasItem(RequiredItem))
             return false;
+
         return true;
     }
 }

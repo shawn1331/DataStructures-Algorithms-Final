@@ -1,7 +1,7 @@
 ﻿namespace Logic;
 public abstract class Items
 {
-    string Name { get; set; }
+   public string Name { get; }
 
     protected Items(string name) { Name = name; }
 

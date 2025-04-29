@@ -26,7 +26,7 @@ public class Hero
         {
             if (Inventory.Peek().GetType() == typeof(Sword)  || Inventory.Peek().GetType() == typeof(Staff) || Inventory.Peek().GetType() == typeof(Bow))
             {
-                saveItem = Inventory.Dequeue(); // cannot discard weapon
+                saveItem = Inventory.Dequeue(); // cannot discard weapon so save it to be requeued
             }
             Inventory.Dequeue(); // Discard oldest item that isn't a weapon
         }
@@ -38,4 +38,6 @@ public class Hero
     public bool HasItem(Items item) => Inventory.Contains(item);
 
     public void DisplayInventory() => Console.WriteLine("Inventory: " + string.Join(", ", Inventory));
+
+    public Items GetItemToUse() => Inventory.Dequeue();
 }

@@ -134,4 +134,21 @@ public class ChallengeBST
         }
         return node;
     }
+
+    public BSTNode? GetChallenge(int id)
+    {
+       BSTNode? node = Root;
+        while (node?.ID != id)
+        {
+            if (node == null)
+                return null;
+            else if (id > node.ID)
+                node = node.Right;
+            else if (id < node.ID)
+                node = node.Left;
+            else
+                return node;
+        }
+        return null;
+    }
 }

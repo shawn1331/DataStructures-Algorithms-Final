@@ -8,7 +8,7 @@ while (playAgain)
 {
     string heroName = GetHeroName();
     Hero hero = GetHeroChoice(heroName);
-    Game game = new(hero, GetUserPath, GetStatChoice, GetInitialPath);
+    Game game = new(hero, GetUserPath, GetStatChoice, GetInitialPath, GetCharChoice);
 
     game.RunGame();
 
@@ -144,4 +144,16 @@ Press the number associated with the stat you would like to increase:
     }
     else
         return GetStatChoice();
+}
+
+static char GetCharChoice()
+{
+    Console.WriteLine("Press 'y' for yes or 'n' for no");
+
+    char choice = Console.ReadKey(true).KeyChar;
+
+    if (char.IsAsciiLetterLower(choice))
+        return choice;
+    else
+        return GetCharChoice();
 }
